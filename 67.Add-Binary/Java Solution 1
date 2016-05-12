@@ -1,0 +1,14 @@
+import java.math.BigInteger;
+
+public class Solution {
+    public String addBinary(String a, String b) {
+       
+        BigInteger aValue = new BigInteger(a, 2);
+		BigInteger bValue = new BigInteger(b, 2);
+		BigInteger sum = new BigInteger("0", 2);
+		sum = aValue.add(bValue);
+		return sum.toString(2);
+		
+		
+    }
+}
