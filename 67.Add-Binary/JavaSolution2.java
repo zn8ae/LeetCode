@@ -4,31 +4,36 @@
 // a = "11"
 // b = "1"
 // Return "100".
-
 public class Solution {
     public String addBinary(String a, String b) {
-        if (a == null || a.length() == 0) {
-            return b;
+        if(a.length() < b.length()){
+            String tmp = a;
+            a = b;
+            b = tmp;
         }
-
-        if (b == null || b.length() == 0) {
-            return a;
+        
+        int pa = a.length()-1;
+        int pb = b.length()-1;
+        int carries = 0;
+        String rst = "";
+        
+        while(pb >= 0){
+            int sum = (int)(a.charAt(pa) - '0') + (int)(b.charAt(pb) - '0') + carries;
+            rst = String.valueOf(sum % 2) + rst;
+            carries = sum / 2;
+            pa --;
+            pb --;
         }
-
-        StringBuilder sb = new StringBuilder();
-
-        int lastA = a.length() - 1;
-        int lastB = b.length() - 1;
-        int carry = 0;
-
-        while (lastA >= 0 || lastB >= 0 || carry > 0) {
-            int num1 = lastA >= 0 ? a.charAt(lastA--) - '0' : 0;
-            int num2 = lastB >= 0 ? b.charAt(lastB--) - '0' : 0;
-            int current = (num1 + num2 + carry) % 2;
-            carry = (num1 + num2 + carry) / 2;
-            sb.append(current);
-        }
-        sb.reverse();
-        return sb.toString();
+        
+        while(pa >= 0){
+            int sum = (int)(a.charAt(pa) - '0') + carries;
+            rst = String.valueOf(sum % 2) + rst;
+            carries = sum / 2;
+            pa --;
+        }       
+        
+        if (carries == 1)
+            rst = "1" + rst;
+        return rst;
     }
 }
