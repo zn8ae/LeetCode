@@ -10,4 +10,14 @@ You may assume the string contains only lowercase alphabets.*/
 /*Follow up:
 What if the inputs contain unicode characters? How would you adapt your solution to such case?*/
 
-
+public class Solution {
+    public boolean isAnagram(String s, String t) {
+        if(s.length()!=t.length())
+        return false;
+        char [] S =s.toCharArray();
+        char [] T =t.toCharArray();
+        Arrays.sort(S);
+        Arrays.sort(T);
+        return Arrays.equals(S,T);
+    }
+}
