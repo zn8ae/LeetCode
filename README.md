@@ -1,4 +1,3 @@
 # LeetCode
-One Problem per day!
+One problem per day keeps bankrupcy away!
 
-67 Add Binary
